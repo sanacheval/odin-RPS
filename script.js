@@ -40,7 +40,7 @@ function playRound(humanChoice, computerChoice) {
     }
     else {
         computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}`;
+        return `You lose! ${computerChoice} beats ${humanChoice}.`;
     }
 } 
 
@@ -54,11 +54,12 @@ let scores = document.createElement("p");
 
 reset.addEventListener("click", () => {
     div.textContent="";
+    humanScore=0;
+    computerScore=0;
 })
 
 rockBtn.addEventListener("click", () => {
-    playRound("rock", getComputerChoice());
-    result.textContent = `Computer: ${computerScore}, Human: ${humanScore}`;
+    result.textContent = `${playRound("rock", getComputerChoice())} Computer: ${computerScore}, Human: ${humanScore}`;
     div.appendChild(result);
     scores.textContent="";
     if (humanScore+computerScore===5) {
@@ -67,8 +68,7 @@ rockBtn.addEventListener("click", () => {
 })
 
 paperBtn.addEventListener("click", () => {
-    playRound("paper", getComputerChoice());
-    result.textContent = `Computer: ${computerScore}, Human: ${humanScore}`;
+    result.textContent = `${playRound("paper", getComputerChoice())} Computer: ${computerScore}, Human: ${humanScore}`;
     div.appendChild(result);
     scores.textContent="";
     if (humanScore+computerScore===5) {
@@ -77,8 +77,7 @@ paperBtn.addEventListener("click", () => {
 })
 
 scissorsBtn.addEventListener("click", () => {
-    playRound("scissors", getComputerChoice());
-    result.textContent = `Computer: ${computerScore}, Human: ${humanScore}`;
+    result.textContent = `${playRound("scissors", getComputerChoice())} Computer: ${computerScore}, Human: ${humanScore}`;
     div.appendChild(result);
     scores.textContent="";
     if (humanScore+computerScore===5) {

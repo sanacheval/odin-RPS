@@ -1,0 +1,21 @@
+* {
+    background-color: rgb(205, 206, 170);
+    color: rgb(61, 89, 26);
+    margin: 50px;
+}
+
+button {
+    font-size: 20px;
+    border: 0px;
+}
+button:hover {
+    color: rgb(105, 153, 45);
+    cursor:pointer;
+}
+div {
+    font-size: 20px;
+    text-align: center;
+}
+div#results {
+    font-size: 40px;
+}
