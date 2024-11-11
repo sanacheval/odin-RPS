@@ -44,41 +44,57 @@ function playRound(humanChoice, computerChoice) {
     }
 } 
 
-function playGame(rounds) {
-    for (let i=0; i<rounds; i++) {
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
-    }
-    if (humanScore>computerScore) {
-        return `You won! The final score was ${humanScore} for you and ${computerScore} for the computer.`
-    }
-    else {
-        return `You lost! The final score was ${computerScore} for the computer and ${humanScore} for you.`
-    }
-}
-//removed code for now: prompt("Enter the number of rounds you'd like to play:")
-//console.log(playGame(1));
-
 let rockBtn = document.querySelector("button#rock");
 let paperBtn = document.querySelector("button#paper");
 let scissorsBtn = document.querySelector("button#scissors");
+let div = document.querySelector("div#results");
+let result = document.createElement("p");
+let reset = document.querySelector("button#reset")
+let scores = document.createElement("p");
+
+reset.addEventListener("click", () => {
+    div.textContent="";
+})
 
 rockBtn.addEventListener("click", () => {
-    let div = document.querySelector("div#results");
-    let result = document.createElement("p");
-    result.textContent = `The result is: ${playRound("rock", getComputerChoice())}`;
+    playRound("rock", getComputerChoice());
+    result.textContent = `Computer: ${computerScore}, Human: ${humanScore}`;
     div.appendChild(result);
+    scores.textContent="";
+    if (humanScore+computerScore===5) {
+        showResults();
+    }
 })
 
 paperBtn.addEventListener("click", () => {
-    let div = document.querySelector("div#results");
-    let result = document.createElement("p");
-    result.textContent = `The result is: ${playRound("paper", getComputerChoice())}`;
+    playRound("paper", getComputerChoice());
+    result.textContent = `Computer: ${computerScore}, Human: ${humanScore}`;
     div.appendChild(result);
+    scores.textContent="";
+    if (humanScore+computerScore===5) {
+        showResults();
+    }
 })
 
 scissorsBtn.addEventListener("click", () => {
-    let div = document.querySelector("div#results");
-    let result = document.createElement("p");
-    result.textContent = `The result is: ${playRound("scissors", getComputerChoice())}`;
+    playRound("scissors", getComputerChoice());
+    result.textContent = `Computer: ${computerScore}, Human: ${humanScore}`;
     div.appendChild(result);
+    scores.textContent="";
+    if (humanScore+computerScore===5) {
+        showResults();
+    }
 })
+
+function showResults() {
+    if (humanScore>computerScore) {
+        scores.textContent = `You won! The final score was ${humanScore} for you and ${computerScore} for the computer.`;
+        div.appendChild(scores);
+    }
+    else {
+        scores.textContent = `You lost! The final score was ${computerScore} for the computer and ${humanScore} for you.`;
+        div.appendChild(scores);
+    }
+    humanScore=0;
+    computerScore=0;
+}
