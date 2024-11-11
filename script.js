@@ -63,13 +63,22 @@ let paperBtn = document.querySelector("button#paper");
 let scissorsBtn = document.querySelector("button#scissors");
 
 rockBtn.addEventListener("click", () => {
-    console.log(playRound("rock", getComputerChoice()));
+    let div = document.querySelector("div#results");
+    let result = document.createElement("p");
+    result.textContent = `The result is: ${playRound("rock", getComputerChoice())}`;
+    div.appendChild(result);
 })
 
 paperBtn.addEventListener("click", () => {
-    console.log(playRound("paper", getComputerChoice()));
+    let div = document.querySelector("div#results");
+    let result = document.createElement("p");
+    result.textContent = `The result is: ${playRound("paper", getComputerChoice())}`;
+    div.appendChild(result);
 })
 
 scissorsBtn.addEventListener("click", () => {
-    console.log(playRound("scissors", getComputerChoice()));
+    let div = document.querySelector("div#results");
+    let result = document.createElement("p");
+    result.textContent = `The result is: ${playRound("scissors", getComputerChoice())}`;
+    div.appendChild(result);
 })
